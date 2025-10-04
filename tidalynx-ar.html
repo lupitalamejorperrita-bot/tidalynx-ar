@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aquaforestre - Tidalynx</title>
+
+  <!-- Librería del visor 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #001a26 0%, #00344d 100%);
+      color: #e0faff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #00c4ff;
+      text-shadow: 0 0 10px #0077a7;
+    }
+
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 500px;
+      background-color: #000;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    .story-box {
+      margin-top: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.6;
+      transition: opacity 1s;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00b4ff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #007fcc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Tidalynx - Guardiana de las Aguas</h1>
+
+  <!-- 👇 Aquí cambia TU-USUARIO y TU-REPO -->
+  <model-viewer 
+    src="https://lupitalamejorperrita-bot.github.io/prueba/tidalynx.glb"
+    alt="Tidalynx, criatura de Aquaforestre"
+    ar
+    camera-controls
+    auto-rotate
+    shadow-intensity="1">
+  </model-viewer>
+
+  <div class="story-box" id="story">
+    Pulsa el botón para descubrir la historia de Tidalynx.
+  </div>
+
+  <button onclick="mostrarHistoria()">Mostrar historia</button>
+
+  <script>
+    const textoHistoria = [
+      "Hostil al inicio, Tidalynx acechaba como depredador protector de su territorio.",
+      "Pero al presenciar la ternura de Fantasia y Fishaidoncha, bajó la guardia.",
+      "Desde entonces se volvió cazadora al servicio de la causa, guiando entre depredadores invisibles.",
+      "¿Puedes confiar en quien primero quiso devorarte?"
+    ];
+
+    function mostrarHistoria() {
+      const storyDiv = document.getElementById('story');
+      storyDiv.innerHTML = "";
+      let i = 0;
+
+      function mostrarLinea() {
+        if (i < textoHistoria.length) {
+          storyDiv.innerHTML += textoHistoria[i] + "<br><br>";
+          i++;
+          setTimeout(mostrarLinea, 2500); // Tiempo entre frases (2.5 seg)
+        }
+      }
+
+      mostrarLinea();
+    }
+  </script>
+</body>
+</html>
+
+
